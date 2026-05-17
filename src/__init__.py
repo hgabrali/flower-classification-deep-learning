@@ -1,99 +1,48 @@
-"""
-Flower Classification Deep Learning Package
+"""Flower Classification — Deep Learning.
 
-This package provides a complete deep learning pipeline for automated
-flower species classification using CNNs and transfer learning.
+Public API for the flower_classification package.
+Imports the most useful symbols from the three sub-modules so that
+callers can write, e.g.::
 
-Modules:
-    data_preprocessing: Image loading, augmentation, and dataset preparation.
-    model_training: CNN architectures, training, evaluation, and export utilities.
-    visualization: Training history, confusion matrices, Grad-CAM, and dashboards.
+    from src import load_datasets, build_model, plot_training_history
+
+instead of reaching into the individual sub-modules.
 """
 
 from .data_preprocessing import (
-    get_augmentation_pipeline,
-    load_image,
-    preprocess_image,
-    scan_dataset_directory,
-    build_dataframe,
-    split_dataset,
-    create_tf_dataset,
-    create_keras_generators,
-    generate_sample_data,
-    compute_dataset_statistics,
-    run_preprocessing_pipeline,
+    load_datasets,
+    get_data_pipelines,
     FLOWER_CLASSES,
     IMAGE_SIZE,
     NUM_CLASSES,
+    BATCH_SIZE,
 )
 
 from .model_training import (
-    build_custom_cnn,
-    build_transfer_model,
-    unfreeze_top_layers,
+    build_model,
     compile_model,
-    get_callbacks,
     train_model,
-    create_optuna_objective,
-    run_optuna_study,
     evaluate_model,
-    compute_class_weights,
-    export_model,
+    get_callbacks,
+    run_optuna_study,
+    unfreeze_top_layers,
 )
 
 from .visualization import (
-    plot_training_history,
-    plot_training_history_interactive,
-    plot_confusion_matrix,
-    plot_sample_predictions,
-    plot_class_distribution,
-    compute_gradcam,
+    get_last_conv_layer_name,
+    make_gradcam_heatmap,
     overlay_gradcam,
+    plot_augmentation_examples,
+    plot_class_distribution,
+    plot_confusion_matrix,
     plot_gradcam_grid,
+    plot_image_size_distribution,
     plot_model_comparison,
+    plot_per_class_metrics,
+    plot_sample_images,
+    plot_training_history,
 )
 
-__version__ = "1.0.0"
+__version__ = "2.0.0"
 __author__ = "Hande Gabrali-Knobloch"
-__email__ = "hgabrali@example.com"
-__description__ = "Deep learning pipeline for automated flower species classification"
-
-__all__ = [
-    # Data preprocessing
-    "get_augmentation_pipeline",
-    "load_image",
-    "preprocess_image",
-    "scan_dataset_directory",
-    "build_dataframe",
-    "split_dataset",
-    "create_tf_dataset",
-    "create_keras_generators",
-    "generate_sample_data",
-    "compute_dataset_statistics",
-    "run_preprocessing_pipeline",
-    "FLOWER_CLASSES",
-    "IMAGE_SIZE",
-    "NUM_CLASSES",
-    # Model training
-    "build_custom_cnn",
-    "build_transfer_model",
-    "unfreeze_top_layers",
-    "compile_model",
-    "get_callbacks",
-    "train_model",
-    "create_optuna_objective",
-    "run_optuna_study",
-    "evaluate_model",
-    "compute_class_weights",
-    "export_model",
-    # Visualization
-    "plot_training_history",
-    "plot_training_history_interactive",
-    "plot_confusion_matrix",
-    "plot_sample_predictions",
-    "plot_class_distribution",
-    "compute_gradcam",
-    "overlay_gradcam",
-    "plot_gradcam_grid",
-    "plot_model_comparison",
-]
+__license__ = "MIT"
