@@ -144,7 +144,7 @@ def scan_dataset_directory(data_dir: str) -> Dict[str, List[str]]:
                 ...
 
     Args:
-        data_dir: Path to root dataset directory.
+        data_dir: Path to root dataset directory. 
 
     Returns:
         dict: Mapping from class name to list of image file paths.
